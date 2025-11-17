@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>تقرير الشرطة العسكرية</title>
+<link rel="icon" type="image/png" href="https://i.postimg.cc/28B0910P/snapedit-1754626983902.png">
+
+<style>
+  body {
+    background-color: #0b132b;
+    color: #fff;
+    font-family: "Cairo", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh !important;
+    overflow-y: auto !important;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0%;
+    left: -4%;
+    width: 100%;
+    height: 100%;
+    background: url('https://i.postimg.cc/MTrPcVG2/image.gif') no-repeat;
+    background-size: 50%;
+    background-position: left top;
+    opacity: 0.08;
+    z-index: 0;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: -4%;
+    width: 100%;
+    height: 100%;
+    background: url('https://i.postimg.cc/qMmRN7ss/final-3.gif') no-repeat;
+    background-size: 50%;
+    background-position: right top;
+    opacity: 0.08;
+    z-index: 0;
+  }
+
+  .container {
+    background: #1c2541;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    width: 380px;
+    position: relative;
+    z-index: 1;
+    max-height: 90vh;
+    overflow-y: auto;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.9s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h2 {
+    color: #5bc0be;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    text-align: right;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background: #3a506b;
+    color: white;
+    font-family: "Cairo", sans-serif;
+    text-align: center;
+    transition: 0.3s ease;
+  }
+
+  textarea { height: 70px; resize: none; }
+
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #5bc0be;
+    box-shadow: 0 0 10px #5bc0be80;
+  }
+
+  .inline-fields {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  button {
+    width: 100%;
+    background: #5bc0be;
+    color: #000;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 10px;
+  }
+
+  button:hover {
+    background: #a1dfd5;
+    transform: scale(1.03);
+  }
+
+  .double-buttons button {
+    margin-top: 10px !important;
+  }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #1c2541; }
+  ::-webkit-scrollbar-thumb { background: #5bc0be; border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: #a1dfd5; }
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2> تقرير الشرطة العسكرية</h2>
+
+  <label>من الساعة:</label>
+  <div class="inline-fields">
+    <select id="t1_h">
+      <option disabled selected>ساعة</option>
+      <script>
+        for(let i=1;i<=12;i++)document.write(`<option>${i}</option>`);
+      </script>
+    </select>
+
+    <select id="t1_m">
+      <option disabled selected>دقيقة</option>
+      <script>
+        for(let i=0;i<60;i++){
+          let m=(i<10?"0":"")+i;
+          document.write(`<option>${m}</option>`);
+        }
+      </script>
+    </select>
+
+    <select id="period1">
+      <option value="ص">ص</option>
+      <option value="م">م</option>
+    </select>
+  </div>
+
+  <label>إلى الساعة:</label>
+  <div class="inline-fields">
+    <select id="t2_h">
+      <option disabled selected>ساعة</option>
+      <script>
+        for(let i=1;i<=12;i++)document.write(`<option>${i}</option>`);
+      </script>
+    </select>
+
+    <select id="t2_m">
+      <option disabled selected>دقيقة</option>
+      <script>
+        for(let i=0;i<60;i++){
+          let m=(i<10?"0":"")+i;
+          document.write(`<option>${m}</option>`);
+        }
+      </script>
+    </select>
+
+    <select id="period2">
+      <option value="ص">ص</option>
+      <option value="م">م</option>
+    </select>
+  </div>
+
+  <label>الملاحظات بالميدان:</label>
+  <textarea id="notes"></textarea>
+
+  <label>رتبة الرافع:</label>
+  <select id="rank">
+    <option>الوكيل رقيب</option>
+    <option>الرقيب</option>
+    <option>الرقيب أول</option>
+    <option>الرئيس رقباء</option>
+    <option>الملازم</option>
+    <option>الملازم أول</option>
+    <option>النقيب</option>
+    <option>الرائد</option>
+    <option>المقدم ركن</option>
+    <option>العقيد ركن</option>
+    <option>العميد ركن</option>
+  </select>
+
+  <label>ايدي العسكري:</label>
+  <input type="text" id="soldierId" placeholder="مثال :1009196640927744131 ">
+
+  <div class="double-buttons">
+    <button onclick="copyPolice()">📜 نسخ تقرير الشرطة العسكرية</button>
+    <button onclick="copyCourse()">📜 نسخ تقرير الدورات</button>
+  </div>
+
+</div>
+
+<script>
+
+function safeCopy(text){
+  navigator.clipboard.writeText(text).catch(()=>{
+    let ta=document.createElement("textarea");
+    ta.value=text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    ta.remove();
+  });
+}
+
+
+function copyPolice(){
+
+  let t1 = `${t1_h.value}:${t1_m.value} ${period1.value}`;
+  let t2 = `${t2_h.value}:${t2_m.value} ${period2.value}`;
+
+  let notes = document.getElementById("notes").value;
+  let rank = document.getElementById("rank").value;
+  let id = document.getElementById("soldierId").value;
+
+  let txt =
+`\`تم استلام  مهام ( شرطة عسكرية ) من الساعة ${t1} حتى الساعة ${t2}\`
+
+\`الموقع ساندي - بوليتو\`
+
+\`الوحدات التابعة للمنطقة : \`
+
+\`عموم وحدات أمن الطرق والامن العام \`
+
+\`الملاحظات بالميدان :\`
+
+\` ${notes} \`
+
+\` تم رفع التقرير من قبل ( ${rank} ) :\` <@${id}>`;
+
+  safeCopy(txt);
+}
+
+
+function copyCourse(){
+
+  let t1 = `${t1_h.value}:${t1_m.value} ${period1.value}`;
+  let t2 = `${t2_h.value}:${t2_m.value} ${period2.value}`;
+
+  let rank = document.getElementById("rank").value;
+  let id = document.getElementById("soldierId").value;
+
+  let txt =
+`***\`تـم اسـتـلام مـهـام ( الشرطة العسكرية ) مـن السـاعة ${t1} اٍلـى الـساعة ${t2}\`
+
+\`الـمـوقـع : ساندي + بوليتو \`
+
+\`اســم الــدورة : (الشرطة العسكرية)\`
+
+\`تم رفـــع التـقـريـر من قبــل (${rank}) :\` <@${id}>     ***`;
+
+  safeCopy(txt);
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>إسقاط حكم عسكري</title>
+<link rel="icon" type="image/png" href="https://i.postimg.cc/28B0910P/snapedit-1754626983902.png">
+<style>
+  body {
+    background-color: #0b132b;
+    color: #fff;
+    font-family: "Cairo", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh !important;
+    overflow-y: auto !important;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0%;
+    left: -4%;
+    width: 100%;
+    height: 100%;
+    background: url('https://i.postimg.cc/MTrPcVG2/image.gif') no-repeat;
+    background-size: 50%;
+    background-position: left top;
+    opacity: 0.08;
+    z-index: 0;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: -4%;
+    width: 100%;
+    height: 100%;
+    background: url('https://i.postimg.cc/qMmRN7ss/final-3.gif') no-repeat;
+    background-size: 50%;
+    background-position: right top;
+    opacity: 0.08;
+    z-index: 0;
+  }
+
+  .container {
+    background: #1c2541;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    width: 380px;
+    position: relative;
+    z-index: 1;
+    max-height: 90vh;
+    overflow-y: auto;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.9s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h2 {
+    color: #5bc0be;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    text-align: right;
+  }
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background: #3a506b;
+    color: white;
+    font-family: "Cairo", sans-serif;
+    text-align: center;
+    transition: 0.3s ease;
+  }
+
+  input:focus {
+    outline: none;
+    border-color: #5bc0be;
+    box-shadow: 0 0 10px #5bc0be80;
+  }
+
+  button {
+    width: 100%;
+    background: #5bc0be;
+    color: #000;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 15px;
+  }
+
+  button:hover {
+    background: #a1dfd5;
+    transform: scale(1.03);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1c2541;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #5bc0be;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a1dfd5;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>إسقاط حكم عسكري</h2>
+
+  <label>ايدي القاضي مصدر القرار:</label>
+  <input type="text" id="judgeId" placeholder="مثال : 287728977362288640">
+
+  <label>ايدي صاحب أمر إسقاط الحكم:</label>
+  <input type="text" id="orderGiver" placeholder="مثال : 1110595924767555654">
+
+  <label>ايدي العسكري عليه الحكم:</label>
+  <input type="text" id="soldierId" placeholder="مثال : 1277226689528856631">
+
+  <label>الحكم:</label>
+  <input type="text" id="judgment" placeholder="مثال : غرامة 200 ألف">
+
+  <label>رابط الحكم:</label>
+  <input type="text" id="judgmentLink" placeholder="ضع هنا رابط الحكم">
+
+  <button onclick="copyBanner()">📜 نسخ البانر</button>
+  <button onclick="generateMessage()">📋 نسخ البرقية</button>
+</div>
+
+<script>
+function copyBanner() {
+  navigator.clipboard.writeText("https://i.postimg.cc/1zbcyQ3T/gif_shrdh_3skreh.gif");
+}
+
+function generateMessage() {
+  const judge = document.getElementById("judgeId").value || "xxxxxxxxxxxxxxxxxxx";
+  const orderGiver = document.getElementById("orderGiver").value || "xxxxxxxxxxxxxxxxxxx";
+  const soldier = document.getElementById("soldierId").value || "xxxxxxxxxxxxxxxxxxx";
+  const judgment = document.getElementById("judgment").value || "غير محدد";
+  const link = document.getElementById("judgmentLink").value || "—";
+
+  const msg = `**﷽**
+
+**بعد مراجعة الانظمه والقوانين فقد امرنا بما هو ات **
+
+**قرار اسقاط حكم صادر من قبل القاضي** :
+
+<@${judge}> 
+
+**بأمر من معالي**  :  
+
+<@${orderGiver}>        
+
+**على العسكري المذكور ادناه** :
+
+<@${soldier}> 
+
+**الحكم :**
+
+**\`${judgment}\`**
+
+${link}
+
+**ترسل نسخة لـ** <@&1071933319362654329>  
+
+**رئاسة الشرطة العسكرية** 
+
+<@801559249805115413> 
+
+<@1147884827966714010> 
+
+<@929874150829465600> 
+
+<@&1071933293865480192> 
+
+<@1098355352514330765> 
+
+<@&1071933294473662505> 
+
+<@697432773639536661>`;
+
+  navigator.clipboard.writeText(msg);
+}
+</script>
+
+</body>
+</html>
